@@ -10,10 +10,8 @@ export default function MyPosts() {
         <button>Add new post</button>
       </div>
       <div className={s.posts}>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <Post message='Hi, how are you?' like='15'/>
+        <Post message='Hello everyone!' like='20'/>
       </div>
     </div>
   );
