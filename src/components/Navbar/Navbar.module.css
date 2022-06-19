@@ -1,3 +1,7 @@
+a {
+  text-decoration: none;
+}
+
 .nav {
   grid-area: n;
   background-color: darkseagreen;

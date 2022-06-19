@@ -1,23 +1,48 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import s from "./Navbar.module.css";
 
 export default function Navbar() {
   return (
     <nav className={s.nav}>
-      <div className={`${s.item} ${s.active}`}>
-        <Link to="/profile">Profile</Link>
+      <div>
+        <NavLink
+          to="/profile"
+          className={(item) => (item.isActive ? s.active : s.item)}
+        >
+          Profile
+        </NavLink>
       </div>
-      <div className={s.item}>
-        <Link to="/dialogs">Messages</Link>
+      <div>
+        <NavLink
+          to="/dialogs"
+          className={(item) => (item.isActive ? s.active : s.item)}
+        >
+          Messages
+        </NavLink>
       </div>
-      <div className={s.item}>
-        <Link to="/news">News</Link>
+      <div>
+        <NavLink
+          to="/news"
+          className={(item) => (item.isActive ? s.active : s.item)}
+        >
+          News
+        </NavLink>
       </div>
-      <div className={s.item}>
-        <Link to="/music">Music</Link>
+      <div>
+        <NavLink
+          to="/music"
+          className={(item) => (item.isActive ? s.active : s.item)}
+        >
+          Music
+        </NavLink>
       </div>
-      <div className={s.item}>
-        <Link to="/settings">Settings</Link>
+      <div>
+        <NavLink
+          to="/settings"
+          className={(item) => (item.isActive ? s.active : s.item)}
+        >
+          Settings
+        </NavLink>
       </div>
     </nav>
   );
