@@ -1,13 +1,13 @@
 import { NavLink } from "react-router-dom";
-import s from "./Navbar.module.css";
+import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   return (
-    <nav className={s.nav}>
+    <nav className={styles.nav}>
       <div>
         <NavLink
           to="/profile"
-          className={(item) => (item.isActive ? s.active : s.item)}
+          className={(item) => (item.isActive ? styles.active : styles.item)}
         >
           Profile
         </NavLink>
@@ -15,7 +15,7 @@ export default function Navbar() {
       <div>
         <NavLink
           to="/dialogs"
-          className={(item) => (item.isActive ? s.active : s.item)}
+          className={(item) => (item.isActive ? styles.active : styles.item)}
         >
           Messages
         </NavLink>
@@ -23,7 +23,7 @@ export default function Navbar() {
       <div>
         <NavLink
           to="/news"
-          className={(item) => (item.isActive ? s.active : s.item)}
+          className={(item) => (item.isActive ? styles.active : styles.item)}
         >
           News
         </NavLink>
@@ -31,7 +31,7 @@ export default function Navbar() {
       <div>
         <NavLink
           to="/music"
-          className={(item) => (item.isActive ? s.active : s.item)}
+          className={(item) => (item.isActive ? styles.active : styles.item)}
         >
           Music
         </NavLink>
@@ -39,7 +39,7 @@ export default function Navbar() {
       <div>
         <NavLink
           to="/settings"
-          className={(item) => (item.isActive ? s.active : s.item)}
+          className={(item) => (item.isActive ? styles.active : styles.item)}
         >
           Settings
         </NavLink>

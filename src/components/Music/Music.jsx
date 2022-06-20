@@ -1,4 +1,4 @@
-import s from "./Music.module.css";
+import styles from "./Music.module.css";
 
 export default function Music(props) {
   return (

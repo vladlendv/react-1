@@ -1,11 +1,12 @@
-import s from './Header.module.css';
+import styles from './Header.module.css';
+import logo from './png-g714c85673_640.png';
 
 export default function Header() {
   return (
-    <header className={s.header}>
+    <header className={styles.header}>
       <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMmAD6ddTDbrX2egxtgmOITK0lAA8EIOii_w&usqp=CAU"
-        alt="logo"
+        src={logo}
+        alt="logo-img"
       />
     </header>
   );

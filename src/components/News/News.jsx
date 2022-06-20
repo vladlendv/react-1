@@ -1,4 +1,4 @@
-import s from "./News.module.css";
+import styles from "./News.module.css";
 
 export default function News(props) {
   return (

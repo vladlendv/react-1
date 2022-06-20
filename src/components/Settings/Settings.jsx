@@ -1,4 +1,4 @@
-import s from "./Settings.module.css";
+import styles from "./Settings.module.css";
 
 export default function Settings(props) {
   return (

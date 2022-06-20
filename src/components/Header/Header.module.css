@@ -4,5 +4,8 @@
 }
 
 .header img {
-  width: 70px;
+  position: relative;
+  left: -15px;
+  top: -15px;
+  width: 130px;
 }
