@@ -3,19 +3,7 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 export default function Dialogs(props) {
-  let usersData = [
-    { id: 1, name: "Katya" },
-    { id: 2, name: "Roman" },
-    { id: 3, name: "Dimon" },
-  ];
-
-  let messagesData = [
-    { id: 1, message: "Where am I?" },
-    { id: 2, message: "I don't know" },
-    { id: 3, message: ":(" },
-    { id: 4, message: "Hello there" },
-  ];
-
+  let {usersData, messagesData} = props;
   return (
     <div className={styles.dialogs}>
       <div className={styles.dialogsItems}>
