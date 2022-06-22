@@ -9,19 +9,19 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
 function App(props) {
-  let { postData, usersData, messagesData } = props;
   return (
     <div className="app-wrapper">
       <Header />
-      <Navbar />
+      <Navbar state={props.state.messagesPage} />
       <div className="app-wrapper-content">
         <Routes>
-          <Route path="/profile" element={<Profile postData={postData} />} />
+          <Route
+            path="/profile"
+            element={<Profile state={props.state.profilePage} />}
+          />
           <Route
             path="/dialogs/*"
-            element={
-              <Dialogs usersData={usersData} messagesData={messagesData} />
-            }
+            element={<Dialogs state={props.state.messagesPage} />}
           />
           <Route path="/news" element={<News />} />
           <Route path="/music" element={<Music />} />

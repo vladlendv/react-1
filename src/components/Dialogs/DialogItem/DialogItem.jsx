@@ -4,6 +4,9 @@ import styles from "./DialogItem.module.css";
 export default function DialogItem(props) {
   return (
     <div className={styles.dialog}>
+    <div>
+      <img src={props.profileImg} alt="avatar" className={styles.userAvatar}></img>
+    </div>
       <NavLink to={`/dialogs/${props.id}`}>{props.name}</NavLink>
     </div>
   );

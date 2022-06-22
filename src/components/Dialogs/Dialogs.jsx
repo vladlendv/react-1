@@ -3,12 +3,12 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 export default function Dialogs(props) {
-  let {usersData, messagesData} = props;
+  let {usersData, messagesData} = props.state;
   return (
     <div className={styles.dialogs}>
       <div className={styles.dialogsItems}>
         {usersData.map((item) => {
-          return <DialogItem name={item.name} id={item.id} key={item.id} />;
+          return <DialogItem name={item.name} id={item.id} key={item.id} profileImg={item.profileImg} />;
         })}
       </div>
       <div className={styles.messages}>
