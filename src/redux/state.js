@@ -1,3 +1,5 @@
+import redrawDOM from "../render";
+
 let state = {
   profilePage: {
     postData: [
@@ -14,14 +16,49 @@ let state = {
       { id: 4, message: "Hello there" },
     ],
     usersData: [
-      { id: 2, name: "Roman", profileImg: 'https://android-obzor.com/wp-content/uploads/2022/02/6-1.jpg' },
-      { id: 1, name: "Katya", profileImg: 'https://android-obzor.com/wp-content/uploads/2022/02/4-1.jpg'},
-      { id: 3, name: "Dimon", profileImg: 'https://android-obzor.com/wp-content/uploads/2022/02/16-1.jpg'},
-      { id: 3, name: "Dimon", profileImg: 'https://android-obzor.com/wp-content/uploads/2022/02/16-1.jpg'},
-      { id: 3, name: "Dimon", profileImg: 'https://android-obzor.com/wp-content/uploads/2022/02/16-1.jpg'},
+      {
+        id: 2,
+        name: "Roman",
+        profileImg:
+          "https://android-obzor.com/wp-content/uploads/2022/02/6-1.jpg",
+      },
+      {
+        id: 1,
+        name: "Katya",
+        profileImg:
+          "https://android-obzor.com/wp-content/uploads/2022/02/4-1.jpg",
+      },
+      {
+        id: 3,
+        name: "Dimon",
+        profileImg:
+          "https://android-obzor.com/wp-content/uploads/2022/02/16-1.jpg",
+      },
+      {
+        id: 4,
+        name: "Dimond",
+        profileImg:
+          "https://android-obzor.com/wp-content/uploads/2022/02/16-1.jpg",
+      },
+      {
+        id: 5,
+        name: "Demon",
+        profileImg:
+          "https://android-obzor.com/wp-content/uploads/2022/02/16-1.jpg",
+      },
     ],
-    
   },
+};
+
+export const addPost = (postMessage) => {
+  console.log("[ trying add new post... ]");
+  const newPost = {
+    id: 4,
+    message: postMessage,
+    like: 0,
+  };
+  state.profilePage.postData.push(newPost);
+  redrawDOM(state);
 };
 
 export default state;

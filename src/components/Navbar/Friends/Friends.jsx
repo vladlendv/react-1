@@ -7,7 +7,7 @@ export default function Friends(props) {
       <h3>Friends</h3>
       <div className={styles.friends}>
         {props.state.usersData.map(item => {
-          return <User profileImg={item.profileImg} name={item.name} />
+          return <User profileImg={item.profileImg} name={item.name} key={item.id} />
         })}
       </div>
     </div>
