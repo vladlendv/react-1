@@ -15,16 +15,24 @@ export default function MyPosts(props) {
   });
   let newPostElement = React.createRef();
   const addPost = () => {
-    let text = newPostElement.current.value;
-    props.addPost(text);
-    newPostElement.current.value = "";
+    props.addPost();
   };
+  const postOnChange = () => {
+    let text = newPostElement.current.value;
+    console.log(text)
+    props.addCharAtPost(text);
+  };
+
   return (
     <div>
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea ref={newPostElement}></textarea>
+          <textarea
+            onChange={postOnChange}
+            ref={newPostElement}
+            value={props.newPostText}
+          />
         </div>
         <button onClick={addPost}>Add new post</button>
       </div>
