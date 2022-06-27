@@ -1,6 +1,6 @@
 import styles from "./News.module.css";
 
-export default function News(props) {
+const News = (props) => {
   return (
     <div>
       <div>
@@ -12,3 +12,5 @@ export default function News(props) {
     </div>
   );
 }
+
+export default News;

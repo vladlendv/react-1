@@ -2,7 +2,7 @@ import styles from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPosts from "./MyPosts/MyPosts";
 
-export default function Profile(props) {
+const Profile = (props) => {
   return (
     <div>
       <ProfileInfo />
@@ -15,3 +15,5 @@ export default function Profile(props) {
     </div>
   );
 }
+
+export default Profile;

@@ -1,6 +1,6 @@
 import styles from "./Music.module.css";
 
-export default function Music(props) {
+const Music = (props) => {
   return (
     <div>
       <div>
@@ -9,3 +9,5 @@ export default function Music(props) {
     </div>
   );
 }
+
+export default Music;

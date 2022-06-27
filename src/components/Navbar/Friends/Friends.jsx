@@ -1,7 +1,7 @@
 import styles from "./Friends.module.css";
 import User from "./User/User";
 
-export default function Friends(props) {
+const Friends = (props) => {
   return (
     <div>
       <h3>Friends</h3>
@@ -13,3 +13,5 @@ export default function Friends(props) {
     </div>
   );
 }
+
+export default Friends;

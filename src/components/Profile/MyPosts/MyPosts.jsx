@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-export default function MyPosts(props) {
+const MyPosts = (props) => {
   const postsElements = props.postData.map((item) => {
     return (
       <Post
@@ -19,7 +19,7 @@ export default function MyPosts(props) {
   };
   const postOnChange = () => {
     let text = newPostElement.current.value;
-    console.log(text)
+    console.log(text);
     props.addCharAtPost(text);
   };
 
@@ -40,3 +40,5 @@ export default function MyPosts(props) {
     </div>
   );
 }
+
+export default MyPosts;

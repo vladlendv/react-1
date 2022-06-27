@@ -1,9 +1,8 @@
 import { NavLink } from "react-router-dom";
-import state from "../../redux/state";
 import Friends from "./Friends/Friends";
 import styles from "./Navbar.module.css";
 
-export default function Navbar(props) {
+const Navbar = (props) => {
   return (
     <div className={styles.nav}>
       <nav>
@@ -52,3 +51,5 @@ export default function Navbar(props) {
     </div>
   );
 }
+
+export default Navbar;

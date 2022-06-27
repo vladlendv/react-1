@@ -3,7 +3,7 @@ import styles from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
-export default function Dialogs(props) {
+const Dialogs = (props) => {
   let { usersData, messagesData } = props.state;
   let dialogsElement = usersData.map((d) => {
     return (
@@ -34,3 +34,5 @@ export default function Dialogs(props) {
     </div>
   );
 }
+
+export default Dialogs;

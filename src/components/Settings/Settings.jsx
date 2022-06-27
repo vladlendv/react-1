@@ -1,6 +1,6 @@
 import styles from "./Settings.module.css";
 
-export default function Settings(props) {
+const Settings = (props) => {
   return (
     <div>
       <div>
@@ -9,3 +9,5 @@ export default function Settings(props) {
     </div>
   );
 }
+
+export default Settings;

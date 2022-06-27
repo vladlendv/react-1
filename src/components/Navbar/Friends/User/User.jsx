@@ -1,6 +1,6 @@
 import styles from "./User.module.css";
 
-export default function User(props) {
+const User = (props) => {
   return (
     <div>
       <img className={styles.userImg} src={props.profileImg} alt="" />
@@ -8,3 +8,5 @@ export default function User(props) {
     </div>
   );
 }
+
+export default User;

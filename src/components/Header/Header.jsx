@@ -1,7 +1,7 @@
 import styles from './Header.module.css';
 import logo from './png-g714c85673_640.png';
 
-export default function Header() {
+const Header = (props) => {
   return (
     <header className={styles.header}>
       <img
@@ -11,3 +11,5 @@ export default function Header() {
     </header>
   );
 }
+
+export default Header;

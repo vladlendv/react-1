@@ -7,7 +7,7 @@ let state = {
       { id: 2, message: "Hello everyone!", like: 39 },
       { id: 3, message: "JavaScript or...", like: 120325 },
     ],
-    newPostText: '',
+    newPostText: "",
   },
   messagesPage: {
     messagesData: [
@@ -54,7 +54,7 @@ let state = {
 export const addCharAtPost = (currentChar) => {
   state.profilePage.newPostText = currentChar;
   redrawDOM(state);
-}
+};
 
 export const addPost = () => {
   console.log("[ trying add new post... ]");
@@ -64,7 +64,7 @@ export const addPost = () => {
     like: 0,
   };
   state.profilePage.postData.push(newPost);
-  state.profilePage.newPostText = '';
+  state.profilePage.newPostText = "";
   redrawDOM(state);
 };
 

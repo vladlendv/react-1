@@ -1,6 +1,6 @@
-import s from "./ProfileInfo.module.css";
+import styles from "./ProfileInfo.module.css";
 
-export default function ProfileInfo(props) {
+const ProfileInfo = (props) => {
   return (
     <div>
       <div>
@@ -15,3 +15,5 @@ export default function ProfileInfo(props) {
     </div>
   );
 }
+
+export default ProfileInfo;
