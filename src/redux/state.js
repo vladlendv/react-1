@@ -1,4 +1,6 @@
-import redrawDOM from "../render";
+let redrawDOM = () => {
+  console.log('State changed');
+}
 
 let state = {
   profilePage: {
@@ -57,7 +59,6 @@ export const addCharAtPost = (currentChar) => {
 };
 
 export const addPost = () => {
-  console.log("[ trying add new post... ]");
   const newPost = {
     id: 4,
     message: state.profilePage.newPostText,
@@ -67,5 +68,9 @@ export const addPost = () => {
   state.profilePage.newPostText = "";
   redrawDOM(state);
 };
+
+export const subscribe = (observer) => {
+  redrawDOM = observer;
+}
 
 export default state;
