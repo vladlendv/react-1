@@ -14,13 +14,16 @@ const MyPosts = (props) => {
     );
   });
   let newPostElement = React.createRef();
+
   const addPost = () => {
-    props.store._addPost();
+    let bindAddPost = props.store.addPost.bind(props.store);
+    bindAddPost();
   };
   const postOnChange = () => {
     let text = newPostElement.current.value;
     console.log(text);
-    props.store._addCharAtPost(text);
+    let bindAddCharAtPost = props.store.addCharAtPost.bind(props.store);
+    bindAddCharAtPost(text);
   };
 
   return (

@@ -4,23 +4,34 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 const Dialogs = (props) => {
-  let { usersData, messagesData } = props.state;
-  let dialogsElement = usersData.map((d) => {
+  let { usersData, messagesData, activeDialog } = props.state;
+
+  let dialogsElement = usersData.map((user) => {
     return (
       <DialogItem
-        name={d.name}
-        id={d.id}
-        key={d.id}
-        profileImg={d.profileImg}
+        store={props.store}
+        name={user.name}
+        id={user.id}
+        key={user.id}
+        profileImg={user.profileImg}
       />
     );
   });
-  let messagesElement = messagesData.map((m) => {
-    return <Message message={m.message} id={m.id} key={m.id} />;
-  });
+
+  let messagesElement = messagesData[activeDialog.id].messages.map(
+    (userMessage) => {
+      return (
+        <Message message={userMessage} key={userMessage} />
+      );
+    }
+  );
+
   let newMessageElement = React.createRef();
-  let sendMessage = () => {
-    alert(newMessageElement.current.value);
+
+  let sendNewMessage = () => {
+    let bindSendMessage = props.store.sendMessage.bind(props.store);
+    bindSendMessage(activeDialog.id, newMessageElement.current.value);
+    newMessageElement.current.value = '';
   };
 
   return (
@@ -29,10 +40,10 @@ const Dialogs = (props) => {
       <div className={styles.messages}>
         {messagesElement}
         <textarea ref={newMessageElement}></textarea>
-        <button onClick={sendMessage}>Отправить</button>
+        <button onClick={sendNewMessage}>Отправить</button>
       </div>
     </div>
   );
-}
+};
 
 export default Dialogs;

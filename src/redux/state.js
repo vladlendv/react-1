@@ -1,5 +1,5 @@
 const store = {
-  _redrawDOM() {
+  _callSubscriber() {
     console.log("State changed");
   },
 
@@ -13,12 +13,49 @@ const store = {
       newPostText: "",
     },
     messagesPage: {
-      messagesData: [
-        { id: 1, message: "Where am I?" },
-        { id: 2, message: "I don't know" },
-        { id: 3, message: ":(" },
-        { id: 4, message: "Hello there" },
-      ],
+
+      activeDialog: {
+        id: 1,
+        name: ''
+      },
+      messagesData: {
+        1: {
+          messages: [
+            'Where am I?',
+            'I dont know',
+          ]
+        },
+        2: {
+          messages: [
+            ':(',
+            'Im so sad',
+          ]
+        },
+        3: {
+          messages: [
+            'Hello there!',
+            ':P',
+          ]
+        },
+        4: {
+          messages: [
+            'Hi, did you need potato?',
+            ':0',
+          ]
+        },
+        5: {
+          messages: [
+            'Hey!',
+            'My name is...',
+          ]
+        },
+      },
+        
+        // { id: 1, messages: "Where am I?" },
+        // { id: 2, messages: "I don't know" },
+        // { id: 3, messages: ":(" },
+        // { id: 4, messages: "Hello there" },
+      // ],
       usersData: [
         {
           id: 2,
@@ -54,29 +91,40 @@ const store = {
     },
   },
 
-  _addCharAtPost(currentChar) {
-    store._state.profilePage.newPostText = currentChar;
-    store._redrawDOM(store._state);
+  setActiveDialog(user) {
+    this._state.messagesPage.activeDialog = user;
+    this._callSubscriber(this._state);
+  },
+
+  sendMessage(userId, message) {
+    this._state.messagesPage.messagesData[userId].messages.push(message);
+    this._callSubscriber(this._state);
+  },
+
+  addCharAtPost(currentChar) {
+    this._state.profilePage.newPostText = currentChar;
+    this._callSubscriber(this._state);
   },
 
   getState() {
-    return store._state;
+    return this._state;
   },
 
-  _addPost() {
+  addPost() {
     const newPost = {
       id: 4,
-      message: store._state.profilePage.newPostText,
+      message: this._state.profilePage.newPostText,
       like: 0,
     };
-    store._state.profilePage.postData.push(newPost);
-    store._state.profilePage.newPostText = "";
-    store._redrawDOM(store._state);
+    this._state.profilePage.postData.push(newPost);
+    this._state.profilePage.newPostText = "";
+    this._callSubscriber(this._state);
   },
 
   subscribe(observer) {
-    store._redrawDOM = observer;
+    this._callSubscriber = observer;
   },
 };
 
 export default store;
+window.store = store;

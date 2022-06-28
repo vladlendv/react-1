@@ -26,7 +26,9 @@ const App = (props) => {
           />
           <Route
             path="/dialogs/*"
-            element={<Dialogs state={props.state.messagesPage} />}
+            element={
+              <Dialogs state={props.state.messagesPage} store={props.store} />
+            }
           />
           <Route path="/news" element={<News />} />
           <Route path="/music" element={<Music />} />
@@ -35,6 +37,6 @@ const App = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default App;
