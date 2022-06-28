@@ -3,25 +3,25 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import state, { addCharAtPost, addPost, subscribe } from "./redux/state";
+import store from "./redux/state";
 import App from "./App";
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const redrawDOM = (state) => {
-    root.render(
-        <React.StrictMode>
+  root.render(
+    <React.StrictMode>
       <BrowserRouter>
-        <App state={state} addPost={addPost} addCharAtPost={addCharAtPost} />
+        <App
+          state={store.getState()}
+          store={store}
+        />
       </BrowserRouter>
     </React.StrictMode>
   );
 };
 
-redrawDOM(state);
-
-subscribe(redrawDOM);
-
+redrawDOM(store.getState());
+store.subscribe(redrawDOM);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -20,8 +20,7 @@ const App = (props) => {
             element={
               <Profile
                 profilePage={props.state.profilePage}
-                addPost={props.addPost}
-                addCharAtPost={props.addCharAtPost}
+                store={props.store}
               />
             }
           />
