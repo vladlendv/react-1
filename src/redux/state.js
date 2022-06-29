@@ -13,49 +13,27 @@ const store = {
       newPostText: "",
     },
     messagesPage: {
-
       activeDialog: {
         id: 1,
-        name: ''
+        name: "",
       },
       messagesData: {
         1: {
-          messages: [
-            'Where am I?',
-            'I dont know',
-          ]
+          messages: ["Where am I?", "I dont know"],
         },
         2: {
-          messages: [
-            ':(',
-            'Im so sad',
-          ]
+          messages: [":(", "Im so sad"],
         },
         3: {
-          messages: [
-            'Hello there!',
-            ':P',
-          ]
+          messages: ["Hello there!", ":P"],
         },
         4: {
-          messages: [
-            'Hi, did you need potato?',
-            ':0',
-          ]
+          messages: ["Hi, did you need potato?", ":0"],
         },
         5: {
-          messages: [
-            'Hey!',
-            'My name is...',
-          ]
+          messages: ["Hey!", "My name is..."],
         },
       },
-        
-        // { id: 1, messages: "Where am I?" },
-        // { id: 2, messages: "I don't know" },
-        // { id: 3, messages: ":(" },
-        // { id: 4, messages: "Hello there" },
-      // ],
       usersData: [
         {
           id: 2,

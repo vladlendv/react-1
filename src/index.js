@@ -11,10 +11,7 @@ const redrawDOM = (state) => {
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App
-          state={state}
-          store={store}
-        />
+        <App state={state} store={store} />
       </BrowserRouter>
     </React.StrictMode>
   );

@@ -8,27 +8,21 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
-const App = (props) => {
+const App = ({ state, store }) => {
+  let { messagesPage, profilePage } = state;
   return (
     <div className="app-wrapper">
       <Header />
-      <Navbar state={props.state.messagesPage} />
+      <Navbar state={messagesPage} />
       <div className="app-wrapper-content">
         <Routes>
           <Route
             path="/profile"
-            element={
-              <Profile
-                profilePage={props.state.profilePage}
-                store={props.store}
-              />
-            }
+            element={<Profile profilePage={profilePage} store={store} />}
           />
           <Route
             path="/dialogs/*"
-            element={
-              <Dialogs state={props.state.messagesPage} store={props.store} />
-            }
+            element={<Dialogs state={state} store={store} />}
           />
           <Route path="/news" element={<News />} />
           <Route path="/music" element={<Music />} />

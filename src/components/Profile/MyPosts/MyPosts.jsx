@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-const MyPosts = (props) => {
-  const postsElements = props.postData.map((item) => {
+const MyPosts = ({ postData, newPostText, store }) => {
+  const postsElements = postData.map((item) => {
     return (
       <Post
         message={item.message}
@@ -16,13 +16,13 @@ const MyPosts = (props) => {
   let newPostElement = React.createRef();
 
   const addPost = () => {
-    let bindAddPost = props.store.addPost.bind(props.store);
+    let bindAddPost = store.addPost.bind(store);
     bindAddPost();
   };
   const postOnChange = () => {
     let text = newPostElement.current.value;
     console.log(text);
-    let bindAddCharAtPost = props.store.addCharAtPost.bind(props.store);
+    let bindAddCharAtPost = store.addCharAtPost.bind(store);
     bindAddCharAtPost(text);
   };
 
@@ -34,7 +34,7 @@ const MyPosts = (props) => {
           <textarea
             onChange={postOnChange}
             ref={newPostElement}
-            value={props.newPostText}
+            value={newPostText}
           />
         </div>
         <button onClick={addPost}>Add new post</button>
@@ -42,6 +42,6 @@ const MyPosts = (props) => {
       <div className={styles.posts}>{postsElements}</div>
     </div>
   );
-}
+};
 
 export default MyPosts;

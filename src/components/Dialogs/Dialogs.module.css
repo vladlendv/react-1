@@ -4,7 +4,32 @@
 }
 
 .dialogsItems a {
-    color: blueviolet;
+    color: blanchedalmond;
+}
+
+.sendMessageBlock {
+    display: flex;
+    align-items: center;
+}
+
+.newMessageField {
+    min-width: 400px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: ivory;
+}
+
+.sendButton {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
+.sendButton:hover {
+    cursor: pointer;
+    background-color: darkgray;
 }
 
 .dialog {
@@ -16,6 +41,7 @@
 }
 
 .messages {
+    background-color: darkseagreen;
 
 }
 

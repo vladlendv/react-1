@@ -4,6 +4,7 @@ const ProfileInfo = (props) => {
   return (
     <div>
       <div>
+        <div className={styles.profileName}>Vladlen Dvornikov</div>
         <img
           height="300px;"
           width="100%"

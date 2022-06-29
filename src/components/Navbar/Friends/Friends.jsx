@@ -1,13 +1,13 @@
 import styles from "./Friends.module.css";
 import User from "./User/User";
 
-const Friends = (props) => {
+const Friends = ({state}) => {
   return (
     <div>
       <h3>Friends</h3>
       <div className={styles.friends}>
-        {props.state.usersData.map(item => {
-          return <User profileImg={item.profileImg} name={item.name} key={item.id} />
+        {state.usersData.map(friend => {
+          return <User profileImg={friend.profileImg} name={friend.name} key={friend.id} />
         })}
       </div>
     </div>

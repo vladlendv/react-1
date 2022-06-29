@@ -1,27 +1,25 @@
 import { NavLink } from "react-router-dom";
 import styles from "./DialogItem.module.css";
 
-const DialogItem = (props) => {
+const DialogItem = ({ store, name, id, profileImg }) => {
   const setDialog = () => {
     let user = {
-      id: props.id,
-      name: props.name,
+      id,
+      name,
     };
-    let bindSetActiveDialog = props.store.setActiveDialog.bind(props.store);
+    let bindSetActiveDialog = store.setActiveDialog.bind(store);
     bindSetActiveDialog(user);
   };
 
   return (
     <div className={styles.dialog}>
-      <div>
-        <img
-          src={props.profileImg}
-          alt="avatar"
-          className={styles.userAvatar}
-        ></img>
-      </div>
-      <NavLink to={`/dialogs/${props.id}`} onClick={setDialog}>
-        {props.name}
+      <NavLink
+        className={(user) => (user.isActive ? styles.active : styles.item)}
+        to={`/dialogs/${id}`}
+        onClick={setDialog}
+      >
+        <img src={profileImg} alt="avatar" className={styles.userAvatar}></img>
+        {name}
       </NavLink>
     </div>
   );
