@@ -59,15 +59,15 @@ const store = {
         },
         {
           id: 4,
-          name: "Dimond",
+          name: "Anonym",
           profileImg:
-            "https://android-obzor.com/wp-content/uploads/2022/02/16-1.jpg",
+            "https://i.pinimg.com/474x/09/fd/1f/09fd1fe5a366cc6f717a3412a626a496.jpg",
         },
         {
           id: 5,
-          name: "Demon",
+          name: "User123",
           profileImg:
-            "https://android-obzor.com/wp-content/uploads/2022/02/16-1.jpg",
+            "https://www.shareicon.net/data/512x512/2016/09/15/829453_user_512x512.png",
         },
       ],
     },

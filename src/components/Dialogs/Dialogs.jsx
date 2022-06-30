@@ -17,7 +17,13 @@ const Dialogs = ({ dispatch, state }) => {
   ));
 
   let messagesElement = messagesData[activeDialog.id].messages.map(
-    (userMessage) => <Message message={userMessage} key={userMessage} />
+    (userMessage) => (
+      <Message
+        user={usersData.filter((user) => user.id === activeDialog.id)}
+        message={userMessage}
+        key={userMessage}
+      />
+    )
   );
 
   let newMessageElement = React.createRef();
