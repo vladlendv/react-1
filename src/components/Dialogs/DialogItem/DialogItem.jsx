@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { setDialogActionCreator } from "../../../redux/state";
 import styles from "./DialogItem.module.css";
 
 const DialogItem = ({ dispatch, name, id, profileImg }) => {
@@ -7,10 +8,7 @@ const DialogItem = ({ dispatch, name, id, profileImg }) => {
       id,
       name,
     };
-    dispatch({
-      type: "SET-ACTIVE-DIALOG",
-      user: user,
-    });
+    dispatch(setDialogActionCreator(user));
   };
 
   return (

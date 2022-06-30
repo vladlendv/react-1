@@ -1,3 +1,8 @@
+const ADD_POST = "ADD-POST";
+const ADD_CHAR_AT_POST = "ADD-CHAR-AT-POST";
+const SEND_MESSAGE = "SEND-MESSAGE";
+const SET_ACTIVE_DIALOG = "SET-ACTIVE-DIALOG";
+
 const store = {
   _callSubscriber() {
     console.log("State changed");
@@ -73,35 +78,54 @@ const store = {
   subscribe(observer) {
     this._callSubscriber = observer;
   },
-  // setActiveDialog(user) {},
-  
-  // sendMessage(userId, message) {},
-  // addCharAtPost(currentChar) {},
-  // addPost() {},
   dispatch(action) {
-    if (action.type === "ADD-POST") {
-      const newPost = {
-        id: 4,
-        message: this._state.profilePage.newPostText,
-        like: 0,
-      };
-      this._state.profilePage.postData.push(newPost);
-      this._state.profilePage.newPostText = "";
-      this._callSubscriber(this._state);
-    } else if (action.type === "ADD-CHAR-AT-POST") {
-      this._state.profilePage.newPostText = action.currentChar;
-      this._callSubscriber(this._state);
-    } else if (action.type === "SEND-MESSAGE") {
-      this._state.messagesPage.messagesData[action.userId].messages.push(
-        action.message
-      );
-      this._callSubscriber(this._state);
-    } else if (action.type === "SET-ACTIVE-DIALOG") {
-      this._state.messagesPage.activeDialog = action.user;
-      this._callSubscriber(this._state);
+    switch (action.type) {
+      case ADD_POST:
+        const newPost = {
+          id: 4,
+          message: this._state.profilePage.newPostText,
+          like: 0,
+        };
+        this._state.profilePage.postData.unshift(newPost);
+        this._state.profilePage.newPostText = "";
+        this._callSubscriber(this._state);
+        break;
+      case ADD_CHAR_AT_POST:
+        this._state.profilePage.newPostText = action.currentChar;
+        this._callSubscriber(this._state);
+        break;
+      case SEND_MESSAGE:
+        this._state.messagesPage.messagesData[action.userId].messages.push(
+          action.message
+        );
+        this._callSubscriber(this._state);
+        break;
+      case SET_ACTIVE_DIALOG:
+        this._state.messagesPage.activeDialog = action.user;
+        this._callSubscriber(this._state);
+        break;
+      default:
+        break;
     }
   },
 };
+
+export const addPostActionCreator = () => ({ type: ADD_POST });
+export const addCharAtPostActionCreator = (text) => ({
+  type: ADD_CHAR_AT_POST,
+  currentChar: text,
+});
+
+export const sendNewMessageActionCreator = (activeDialog, messageValue) => ({
+  type: SEND_MESSAGE,
+  userId: activeDialog,
+  message: messageValue,
+});
+
+export const setDialogActionCreator = (user) => ({
+  type: SET_ACTIVE_DIALOG,
+  user: user,
+});
 
 export default store;
 window.store = store;

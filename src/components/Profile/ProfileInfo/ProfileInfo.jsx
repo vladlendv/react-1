@@ -15,6 +15,6 @@ const ProfileInfo = (props) => {
       <div>avatar + description</div>
     </div>
   );
-}
+};
 
 export default ProfileInfo;

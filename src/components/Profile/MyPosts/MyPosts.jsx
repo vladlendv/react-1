@@ -1,29 +1,20 @@
 import React from "react";
+import {
+  addCharAtPostActionCreator,
+  addPostActionCreator,
+} from "../../../redux/state";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 const MyPosts = ({ postData, newPostText, dispatch }) => {
-  const postsElements = postData.map((item) => {
-    return (
-      <Post
-        message={item.message}
-        like={item.like}
-        id={item.id}
-        key={item.id}
-      />
-    );
-  });
+  const postsElements = postData.map((item) => (
+    <Post message={item.message} like={item.like} id={item.id} key={item.id} />
+  ));
   let newPostElement = React.createRef();
-
-  const addPost = () => {
-    dispatch({ type: "ADD-POST" });
-  };
+  const addPost = () => dispatch(addPostActionCreator());
   const postOnChange = () => {
     let text = newPostElement.current.value;
-    dispatch({
-      type: "ADD-CHAR-AT-POST",
-      currentChar: text,
-    });
+    dispatch(addCharAtPostActionCreator(text));
   };
 
   return (
