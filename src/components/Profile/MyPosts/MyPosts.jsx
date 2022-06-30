@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-const MyPosts = ({ postData, newPostText, store }) => {
+const MyPosts = ({ postData, newPostText, dispatch }) => {
   const postsElements = postData.map((item) => {
     return (
       <Post
@@ -16,14 +16,14 @@ const MyPosts = ({ postData, newPostText, store }) => {
   let newPostElement = React.createRef();
 
   const addPost = () => {
-    let bindAddPost = store.addPost.bind(store);
-    bindAddPost();
+    dispatch({ type: "ADD-POST" });
   };
   const postOnChange = () => {
     let text = newPostElement.current.value;
-    console.log(text);
-    let bindAddCharAtPost = store.addCharAtPost.bind(store);
-    bindAddCharAtPost(text);
+    dispatch({
+      type: "ADD-CHAR-AT-POST",
+      currentChar: text,
+    });
   };
 
   return (

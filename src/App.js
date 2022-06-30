@@ -8,7 +8,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
-const App = ({ state, store }) => {
+const App = ({ state, dispatch }) => {
   let { messagesPage, profilePage } = state;
   return (
     <div className="app-wrapper">
@@ -18,11 +18,11 @@ const App = ({ state, store }) => {
         <Routes>
           <Route
             path="/profile"
-            element={<Profile profilePage={profilePage} store={store} />}
+            element={<Profile profilePage={profilePage} dispatch={dispatch} />}
           />
           <Route
             path="/dialogs/*"
-            element={<Dialogs state={state} store={store} />}
+            element={<Dialogs state={state} dispatch={dispatch} />}
           />
           <Route path="/news" element={<News />} />
           <Route path="/music" element={<Music />} />

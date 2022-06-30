@@ -13,4 +13,5 @@ const NavLinkItem = ({ to, name }) => {
     </div>
   );
 };
+
 export default NavLinkItem;

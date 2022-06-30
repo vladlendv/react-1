@@ -1,14 +1,16 @@
 import { NavLink } from "react-router-dom";
 import styles from "./DialogItem.module.css";
 
-const DialogItem = ({ store, name, id, profileImg }) => {
+const DialogItem = ({ dispatch, name, id, profileImg }) => {
   const setDialog = () => {
     let user = {
       id,
       name,
     };
-    let bindSetActiveDialog = store.setActiveDialog.bind(store);
-    bindSetActiveDialog(user);
+    dispatch({
+      type: "SET-ACTIVE-DIALOG",
+      user: user,
+    });
   };
 
   return (

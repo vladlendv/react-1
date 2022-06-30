@@ -2,7 +2,6 @@ const store = {
   _callSubscriber() {
     console.log("State changed");
   },
-
   _state: {
     profilePage: {
       postData: [
@@ -68,39 +67,39 @@ const store = {
       ],
     },
   },
-
-  setActiveDialog(user) {
-    this._state.messagesPage.activeDialog = user;
-    this._callSubscriber(this._state);
-  },
-
-  sendMessage(userId, message) {
-    this._state.messagesPage.messagesData[userId].messages.push(message);
-    this._callSubscriber(this._state);
-  },
-
-  addCharAtPost(currentChar) {
-    this._state.profilePage.newPostText = currentChar;
-    this._callSubscriber(this._state);
-  },
-
   getState() {
     return this._state;
   },
-
-  addPost() {
-    const newPost = {
-      id: 4,
-      message: this._state.profilePage.newPostText,
-      like: 0,
-    };
-    this._state.profilePage.postData.push(newPost);
-    this._state.profilePage.newPostText = "";
-    this._callSubscriber(this._state);
-  },
-
   subscribe(observer) {
     this._callSubscriber = observer;
+  },
+  // setActiveDialog(user) {},
+  
+  // sendMessage(userId, message) {},
+  // addCharAtPost(currentChar) {},
+  // addPost() {},
+  dispatch(action) {
+    if (action.type === "ADD-POST") {
+      const newPost = {
+        id: 4,
+        message: this._state.profilePage.newPostText,
+        like: 0,
+      };
+      this._state.profilePage.postData.push(newPost);
+      this._state.profilePage.newPostText = "";
+      this._callSubscriber(this._state);
+    } else if (action.type === "ADD-CHAR-AT-POST") {
+      this._state.profilePage.newPostText = action.currentChar;
+      this._callSubscriber(this._state);
+    } else if (action.type === "SEND-MESSAGE") {
+      this._state.messagesPage.messagesData[action.userId].messages.push(
+        action.message
+      );
+      this._callSubscriber(this._state);
+    } else if (action.type === "SET-ACTIVE-DIALOG") {
+      this._state.messagesPage.activeDialog = action.user;
+      this._callSubscriber(this._state);
+    }
   },
 };
 

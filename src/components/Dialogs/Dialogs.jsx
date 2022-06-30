@@ -3,12 +3,12 @@ import styles from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
-const Dialogs = ({ store, state }) => {
+const Dialogs = ({ dispatch, state }) => {
   let { usersData, messagesData, activeDialog } = state.messagesPage;
   let dialogsElement = usersData.map((user) => {
     return (
       <DialogItem
-        store={store}
+        dispatch={dispatch}
         name={user.name}
         id={user.id}
         key={user.id}
@@ -24,10 +24,12 @@ const Dialogs = ({ store, state }) => {
   );
 
   let newMessageElement = React.createRef();
-
   let sendNewMessage = () => {
-    let bindSendMessage = store.sendMessage.bind(store);
-    bindSendMessage(activeDialog.id, newMessageElement.current.value);
+    dispatch({
+      type: "SEND-MESSAGE",
+      userId: activeDialog.id,
+      message: newMessageElement.current.value,
+    });
     newMessageElement.current.value = "";
   };
 

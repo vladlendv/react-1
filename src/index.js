@@ -11,7 +11,7 @@ const redrawDOM = (state) => {
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={state} store={store} />
+        <App state={state} dispatch={store.dispatch.bind(store)} />
       </BrowserRouter>
     </React.StrictMode>
   );
