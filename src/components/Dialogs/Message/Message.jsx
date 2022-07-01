@@ -1,14 +1,14 @@
 import styles from "./Message.module.css";
 
-const Message = ({ message, user }) => {
+const Message = ({ message, user, type, profileInfo}) => {
   return (
     <div className={styles.messageBlock}>
       <img
-        src={user[0].profileImg}
+        src={type === 'inner' ? user[0].profileImg : profileInfo.profileImg}
         alt="avatar"
         className={styles.userAvatar}
       ></img>
-      {user[0].name}
+      {type === 'inner' ? user[0].name : ''}
       <div className={styles.message}>{message}</div>
     </div>
   );

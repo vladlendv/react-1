@@ -5,7 +5,7 @@ import Message from "./Message/Message";
 import { sendNewMessageActionCreator } from "../../redux/state";
 
 const Dialogs = ({ dispatch, state }) => {
-  let { usersData, messagesData, activeDialog } = state.messagesPage;
+  let { usersData, activeDialog } = state.messagesPage;
   let dialogsElement = usersData.map((user) => (
     <DialogItem
       dispatch={dispatch}
@@ -16,15 +16,18 @@ const Dialogs = ({ dispatch, state }) => {
     />
   ));
 
-  let messagesElement = messagesData[activeDialog.id].messages.map(
-    (userMessage) => (
+  let currentUser = usersData.filter((item) => item.id === activeDialog.id);
+  let messagesElement = currentUser[0].messages.map((userMessage) => {
+    return (
       <Message
-        user={usersData.filter((user) => user.id === activeDialog.id)}
-        message={userMessage}
-        key={userMessage}
+        user={currentUser}
+        message={userMessage.text}
+        profileInfo={state.profilePage.profileInfo}
+        type={userMessage.type}
+        key={userMessage.text}
       />
-    )
-  );
+    );
+  });
 
   let newMessageElement = React.createRef();
   let sendNewMessage = () => {
