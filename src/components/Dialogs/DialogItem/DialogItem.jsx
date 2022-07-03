@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { setDialogActionCreator } from "../../../redux/state";
+import { setDialogActionCreator } from "../../../redux/messagesReducer";
 import styles from "./DialogItem.module.css";
 
 const DialogItem = ({ dispatch, name, id, profileImg }) => {

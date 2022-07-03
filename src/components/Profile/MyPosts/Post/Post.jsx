@@ -1,9 +1,9 @@
 import styles from "./Post.module.css";
 
-const Post = ({ message, like }) => {
+const Post = ({ message, like, profileImg}) => {
   return (
     <div className={styles.item}>
-      <img src="https://mir-avatarok.3dn.ru/_si/0/92302704.jpg" alt="" />
+      <img src={profileImg} alt="ava" />
       {message}
       <div>
         <span>{like + " like"}</span>

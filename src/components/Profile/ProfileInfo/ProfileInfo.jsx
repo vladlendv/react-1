@@ -1,10 +1,10 @@
 import styles from "./ProfileInfo.module.css";
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({ profileInfo }) => {
   return (
     <div>
       <div>
-        <div className={styles.profileName}>Vladlen Dvornikov</div>
+        <div className={styles.profileName}>{profileInfo.getFullName()}</div>
         <img
           height="300px;"
           width="100%"
