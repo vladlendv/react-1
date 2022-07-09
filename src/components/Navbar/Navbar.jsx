@@ -2,7 +2,7 @@ import styles from "./Navbar.module.css";
 import Friends from "./Friends/Friends";
 import NavLinkItem from "./NavLinkItem/NavLinkItem";
 
-const Navbar = ({ state }) => {
+const Navbar = ({store}) => {
   return (
     <div className={styles.nav}>
       <nav>
@@ -12,7 +12,7 @@ const Navbar = ({ state }) => {
         <NavLinkItem to="/music" name="Music" />
         <NavLinkItem to="/settings" name="Settings" />
       </nav>
-      <Friends state={state} />
+      <Friends store={store} />
     </div>
   );
 };

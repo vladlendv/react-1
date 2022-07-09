@@ -1,12 +1,12 @@
 import styles from "./Friends.module.css";
 import User from "./User/User";
 
-const Friends = ({ state }) => {
+const Friends = ({ store }) => {
   return (
     <>
       <h3>Friends</h3>
       <div className={styles.friends}>
-        {state.usersData.map(({ profileImg, name, id }) => (
+        {store.getState().messagesPage.usersData.map(({ profileImg, name, id }) => (
           <User profileImg={profileImg} name={name} key={id} />
         ))}
       </div>

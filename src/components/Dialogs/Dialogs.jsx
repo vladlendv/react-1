@@ -7,11 +7,11 @@ import {
   sendNewMessageActionCreator,
 } from "../../redux/messagesReducer";
 
-const Dialogs = ({ dispatch, state }) => {
-  let { usersData, activeDialog, newMessageText } = state.messagesPage;
+const Dialogs = ({store}) => {
+  let { usersData, activeDialog, newMessageText } = store.getState().messagesPage;
   let dialogsElement = usersData.map((user) => (
     <DialogItem
-      dispatch={dispatch}
+      dispatch={store.dispatch}
       name={user.name}
       id={user.id}
       key={user.id}
@@ -25,17 +25,17 @@ const Dialogs = ({ dispatch, state }) => {
       <Message
         user={currentUser}
         message={userMessage.text}
-        profileInfo={state.profilePage.profileInfo}
+        profileInfo={store.getState().profilePage.profileInfo}
         type={userMessage.type}
       />
     );
   });
 
   let messageText = (e) => {
-    dispatch(newMessageTextActionCreator(e.target.value));
+    store.dispatch(newMessageTextActionCreator(e.target.value));
   };
   let sendNewMessage = () => {
-    dispatch(
+    store.dispatch(
       sendNewMessageActionCreator({
         id: activeDialog.id,
         key: Date.now(),

@@ -7,20 +7,20 @@ import store from "./redux/redux-store";
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const redrawDOM = (state) => {
+const redrawDOM = (store) => {
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={state} dispatch={store.dispatch.bind(store)} />
+        <App store={store} />
       </BrowserRouter>
     </React.StrictMode>
   );
 };
 
-redrawDOM(store.getState());
+redrawDOM(store);
 
 store.subscribe(() => {
-  redrawDOM(store.getState());
+  redrawDOM(store);
 });
 
 // If you want to start measuring performance in your app, pass a function

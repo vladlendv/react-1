@@ -1,23 +1,20 @@
-import {
-  addCharAtPostActionCreator,
-  addPostActionCreator,
-} from "../../../redux/profileReducer";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-const MyPosts = ({ postData, newPostText, dispatch, profileInfo }) => {
-  const postsElements = postData.map((item) => (
+const MyPosts = (props) => {
+  const postsElements = props.postData.map((item) => (
     <Post
-      profileImg={profileInfo.profileImg}
+      profileImg={props.profileImg}
       message={item.message}
       like={item.like}
       id={item.id}
       key={item.id}
     />
   ));
-  const addPost = () => dispatch(addPostActionCreator());
-  const postOnChange = (e) => {
-    dispatch(addCharAtPostActionCreator(e.target.value));
+  const addNewPost = () => props.addPost();
+  const newPostOnChange = (e) => {
+    let value = e.target.value;
+    props.postOnChange(value)
   };
 
   return (
@@ -25,9 +22,9 @@ const MyPosts = ({ postData, newPostText, dispatch, profileInfo }) => {
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea onChange={postOnChange} value={newPostText} />
+          <textarea onChange={newPostOnChange} value={props.newPostText} />
         </div>
-        <button onClick={addPost}>Add new post</button>
+        <button onClick={addNewPost}>Add new post</button>
       </div>
       <div className={styles.posts}>{postsElements}</div>
     </div>
