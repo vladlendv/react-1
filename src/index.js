@@ -11,6 +11,7 @@ const redrawDOM = (store) => {
   root.render(
     <React.StrictMode>
       <BrowserRouter>
+        {/* STOP ON 43 React JS Практика - container component (контейнерная компонента) 24:16 */}
         <App store={store} />
       </BrowserRouter>
     </React.StrictMode>

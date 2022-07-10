@@ -1,17 +1,19 @@
-import React from "react";
 import styles from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {
-  newMessageTextActionCreator,
-  sendNewMessageActionCreator,
-} from "../../redux/messagesReducer";
 
-const Dialogs = ({store}) => {
-  let { usersData, activeDialog, newMessageText } = store.getState().messagesPage;
+const Dialogs = ({
+  messageText,
+  sendNewMessage,
+  usersData,
+  newMessageText,
+  profileInfo,
+  store,
+  activeDialog
+}) => {
   let dialogsElement = usersData.map((user) => (
     <DialogItem
-      dispatch={store.dispatch}
+      store={store}
       name={user.name}
       id={user.id}
       key={user.id}
@@ -25,22 +27,17 @@ const Dialogs = ({store}) => {
       <Message
         user={currentUser}
         message={userMessage.text}
-        profileInfo={store.getState().profilePage.profileInfo}
+        profileInfo={profileInfo}
         type={userMessage.type}
       />
     );
   });
 
-  let messageText = (e) => {
-    store.dispatch(newMessageTextActionCreator(e.target.value));
+  let sendMessageText = (e) => {
+    messageText(e.target.value);
   };
-  let sendNewMessage = () => {
-    store.dispatch(
-      sendNewMessageActionCreator({
-        id: activeDialog.id,
-        key: Date.now(),
-      })
-    );
+  let sendToNewMessage = () => {
+    sendNewMessage();
   };
 
   return (
@@ -50,11 +47,11 @@ const Dialogs = ({store}) => {
         {messagesElement}
         <div className={styles.sendMessageBlock}>
           <textarea
-            onChange={messageText}
+            onChange={sendMessageText}
             className={styles.newMessageField}
             value={newMessageText}
           ></textarea>
-          <button className={styles.sendButton} onClick={sendNewMessage}>
+          <button className={styles.sendButton} onClick={sendToNewMessage}>
             SEND
           </button>
         </div>
