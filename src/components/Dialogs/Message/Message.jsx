@@ -1,6 +1,6 @@
 import styles from "./Message.module.css";
 
-const Message = ({ message, user, type, profileInfo, key }) => {
+const Message = ({ message, user, type }) => {
   return (
     <div className={type === "inner" ? styles.innerBlock : styles.outerBlock}>
       {type === "inner" ? (

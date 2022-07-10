@@ -3,17 +3,14 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 const Dialogs = ({
-  messageText,
+  messagesPage,
   sendNewMessage,
-  usersData,
-  newMessageText,
-  profileInfo,
-  store,
-  activeDialog
+  messageText,
+  setDialog,
 }) => {
-  let dialogsElement = usersData.map((user) => (
+  let dialogsElement = messagesPage.usersData.map((user) => (
     <DialogItem
-      store={store}
+      setDialog={setDialog}
       name={user.name}
       id={user.id}
       key={user.id}
@@ -21,13 +18,12 @@ const Dialogs = ({
     />
   ));
 
-  let currentUser = usersData.filter((item) => item.id === activeDialog.id);
+  let currentUser = messagesPage.usersData.filter((item) => item.id === messagesPage.activeDialog.id);
   let messagesElement = currentUser[0].messages.map((userMessage) => {
     return (
       <Message
         user={currentUser}
         message={userMessage.text}
-        profileInfo={profileInfo}
         type={userMessage.type}
       />
     );
@@ -37,7 +33,8 @@ const Dialogs = ({
     messageText(e.target.value);
   };
   let sendToNewMessage = () => {
-    sendNewMessage();
+    let id = messagesPage.activeDialog.id
+    sendNewMessage(id);
   };
 
   return (
@@ -49,7 +46,7 @@ const Dialogs = ({
           <textarea
             onChange={sendMessageText}
             className={styles.newMessageField}
-            value={newMessageText}
+            value={messagesPage.newMessageText}
           ></textarea>
           <button className={styles.sendButton} onClick={sendToNewMessage}>
             SEND

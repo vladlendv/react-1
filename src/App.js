@@ -8,17 +8,14 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
-const App = ({store}) => {
+const App = ({ store }) => {
   return (
     <div className="app-wrapper">
       <Header />
       <Navbar store={store} />
       <div className="app-wrapper-content">
         <Routes>
-          <Route
-            path="/profile"
-            element={<Profile store={store} />}
-          />
+          <Route path="/profile" element={<Profile store={store} />} />
           <Route
             path="/dialogs/*"
             element={<DialogsContainer store={store} />}

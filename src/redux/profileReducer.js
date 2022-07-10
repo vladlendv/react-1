@@ -17,27 +17,29 @@ let initialState = {
       return this.firstName + " " + this.lastName;
     },
   },
-}
+};
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST: {
       const newPost = {
-        id: 4,
+        id: state.postData[state.postData.length - 1].id + 1,
         message: state.newPostText,
         like: 0,
       };
-      state.postData.unshift(newPost);
-      state.newPostText = "";
-      break;
-    case ADD_CHAR_AT_POST:
-      state.newPostText = action.currentChar;
-      break;
+      let localState = { ...state };
+      localState.postData.push(newPost);
+      localState.newPostText = "";
+      return localState;
+    }
+    case ADD_CHAR_AT_POST: {
+      let localState = { ...state };
+      localState.newPostText = action.currentChar;
+      return localState;
+    }
     default:
-      break;
+      return state;
   }
-
-  return state;
 };
 
 export const addPostActionCreator = () => ({ type: ADD_POST });

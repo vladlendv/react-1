@@ -60,35 +60,41 @@ let initialState = {
     },
   ],
   newMessageText: "",
-}
+};
 
 const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case NEW_MESSAGE_TEXT:
-      state.newMessageText = action.newText;
-      break;
-    case SEND_MESSAGE:
-      state.usersData[action.id - 1].messages.push({
+    case NEW_MESSAGE_TEXT: {
+      let localState = { ...state };
+      localState.newMessageText = action.newText;
+      return localState;
+    }
+    case SEND_MESSAGE: {
+      let localState = { ...state };
+      localState.usersData[action.id - 1].messages.push({
         text: state.newMessageText,
         type: "out",
       });
-      state.newMessageText = "";
-      break;
-    case SET_ACTIVE_DIALOG:
-      state.activeDialog = action.user;
-      break;
-    default:
-      break;
-  }
+      localState.newMessageText = "";
+      return localState;
+    }
 
-  return state;
+    case SET_ACTIVE_DIALOG: {
+      let localState = { ...state };
+      localState.activeDialog = action.user;
+      return localState;
+    }
+
+    default:
+      return state;
+  }
 };
 
 export const newMessageTextActionCreator = (newText) => ({
   type: NEW_MESSAGE_TEXT,
   newText,
 });
-export const sendNewMessageActionCreator = ({ id, key, messageValue }) => ({
+export const sendNewMessageActionCreator = ({ id, key }) => ({
   type: SEND_MESSAGE,
   id,
   key,

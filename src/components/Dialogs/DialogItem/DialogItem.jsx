@@ -1,14 +1,13 @@
 import { NavLink } from "react-router-dom";
-import { setDialogActionCreator } from "../../../redux/messagesReducer";
 import styles from "./DialogItem.module.css";
 
-const DialogItem = ({ store, name, id, profileImg }) => {
-  const setDialog = () => {
+const DialogItem = ({ setDialog, name, id, profileImg }) => {
+  const setCurrentDialog = () => {
     let user = {
       id,
       name,
     };
-    store.dispatch(setDialogActionCreator(user));
+    setDialog(user);
   };
 
   return (
@@ -16,7 +15,7 @@ const DialogItem = ({ store, name, id, profileImg }) => {
       <NavLink
         className={(user) => (user.isActive ? styles.active : styles.item)}
         to={`/dialogs/${id}`}
-        onClick={setDialog}
+        onClick={setCurrentDialog}
       >
         <img src={profileImg} alt="avatar" className={styles.userAvatar}></img>
         {name}
