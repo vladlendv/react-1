@@ -14,7 +14,9 @@ const Message = ({ message, user, type }) => {
       )}
 
       <div className={styles.message}>
-        <div className={styles.userName} >{type === "inner" ? user[0].name : ""}</div>
+        <div className={styles.userName}>
+          {type === "inner" ? user[0].name : ""}
+        </div>
         {message}
       </div>
     </div>

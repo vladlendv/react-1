@@ -46,11 +46,11 @@ let mapDispatchToProps = (dispatch) => {
     messageText: (value) => {
       dispatch(newMessageTextActionCreator(value));
     },
-    sendNewMessage: (id) => {
+    sendNewMessage: (id, key) => {
       dispatch(
         sendNewMessageActionCreator({
           id,
-          key: Date.now(),
+          key,
         })
       );
     },

@@ -5,7 +5,6 @@ const DialogItem = ({ setDialog, name, id, profileImg }) => {
   const setCurrentDialog = () => {
     let user = {
       id,
-      name,
     };
     setDialog(user);
   };

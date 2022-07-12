@@ -2,29 +2,28 @@ import styles from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
-const Dialogs = ({
-  messagesPage,
-  sendNewMessage,
-  messageText,
-  setDialog,
-}) => {
+const Dialogs = ({ messagesPage, sendNewMessage, messageText, setDialog }) => {
   let dialogsElement = messagesPage.usersData.map((user) => (
     <DialogItem
       setDialog={setDialog}
       name={user.name}
+      profileImg={user.profileImg}
       id={user.id}
       key={user.id}
-      profileImg={user.profileImg}
     />
   ));
 
-  let currentUser = messagesPage.usersData.filter((item) => item.id === messagesPage.activeDialog.id);
+  let currentUser = messagesPage.usersData.filter(
+    (item) => item.id === messagesPage.activeDialog.id
+  );
   let messagesElement = currentUser[0].messages.map((userMessage) => {
     return (
       <Message
         user={currentUser}
         message={userMessage.text}
         type={userMessage.type}
+        id={userMessage.id}
+        key={userMessage.id}
       />
     );
   });
@@ -33,7 +32,7 @@ const Dialogs = ({
     messageText(e.target.value);
   };
   let sendToNewMessage = () => {
-    let id = messagesPage.activeDialog.id
+    let id = messagesPage.activeDialog.id;
     sendNewMessage(id);
   };
 
