@@ -1,0 +1,8 @@
+.usersContainer {
+    display: flex;
+}
+
+.usersItem {
+    margin: 6px;
+    border: 1px silver solid;
+}
