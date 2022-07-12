@@ -8,6 +8,7 @@ const Navbar = ({store}) => {
       <nav>
         <NavLinkItem to="/profile" name="Profile" />
         <NavLinkItem to="/dialogs" name="Messages" />
+        <NavLinkItem to="/users" name="Users" />
         <NavLinkItem to="/news" name="News" />
         <NavLinkItem to="/music" name="Music" />
         <NavLinkItem to="/settings" name="Settings" />

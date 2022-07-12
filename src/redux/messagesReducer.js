@@ -1,4 +1,3 @@
-import deepCopy from "../deepCopy";
 const SEND_MESSAGE = "SEND-MESSAGE";
 const SET_ACTIVE_DIALOG = "SET-ACTIVE-DIALOG";
 const NEW_MESSAGE_TEXT = "NEW_MESSAGE_TEXT";
@@ -63,27 +62,38 @@ let initialState = {
 };
 
 const messagesReducer = (state = initialState, action) => {
-  let stateCopy = deepCopy(state);
   switch (action.type) {
-    case NEW_MESSAGE_TEXT: {
-      stateCopy.newMessageText = action.newText;
-      return stateCopy;
-    }
+    case NEW_MESSAGE_TEXT:
+      return {
+        ...state,
+        newMessageText: action.newText,
+      };
     case SEND_MESSAGE: {
-      stateCopy.usersData[action.id - 1].messages.push({
-        text: state.newMessageText,
-        type: "out",
-        id: state.usersData[action.id - 1].messages.length + 1,
-      });
-      stateCopy.newMessageText = "";
-      return stateCopy;
+      let text = state.newMessageText;
+      state.newMessageText = "";
+      return {
+        ...state,
+        newMessageText: text,
+        usersDate: [
+          state.usersData.map((user) => ({
+            ...user,
+            messages: [
+              ...user.messages,
+              {
+                text: state.newMessageText,
+                type: "out",
+                id: state.usersData[action.id - 1].messages.length + 1,
+              },
+            ],
+          })),
+        ],
+      };
     }
-
-    case SET_ACTIVE_DIALOG: {
-      stateCopy.activeDialog = action.user;
-      return stateCopy;
-    }
-
+    case SET_ACTIVE_DIALOG:
+      return {
+        ...state,
+        activeDialog: action.user,
+      };
     default:
       return state;
   }
