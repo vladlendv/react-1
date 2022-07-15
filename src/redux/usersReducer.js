@@ -3,40 +3,7 @@ const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 
 let initialState = {
-  users: [
-    {
-      id: 1,
-      followed: false,
-      name: "Dmitry",
-      photoUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZwhLS_0Z2QoCmSdPPI9PzDrMEDSUG7Ce74A&usqp=CAU",
-      location: {
-        city: "Minsk",
-        country: "Belarus",
-      },
-    },
-    {
-      id: 2,
-      followed: false,
-      name: "Malena",
-      photoUrl: "https://android-obzor.com/wp-content/uploads/2022/02/5-1.jpg",
-      location: {
-        city: "Bobruisk",
-        country: "Belarus",
-      },
-    },
-    {
-      id: 3,
-      followed: true,
-      name: "Semen",
-      photoUrl:
-        "https://i.pinimg.com/550x/a4/1d/da/a41ddae55fef329b4f74295ba758a424.jpg",
-      location: {
-        city: "Perm",
-        country: "Russia",
-      },
-    },
-  ],
+  users: [],
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -56,7 +23,7 @@ const usersReducer = (state = initialState, action) => {
         ),
       };
     case "SET_USERS":
-      return { ...state, users: [...state.users, action.users] };
+      return { ...state, users: [...action.users] };
     default:
       return state;
   }

@@ -1,8 +1,8 @@
-.usersContainer {
-    display: flex;
+.usersItem {
+    padding-bottom: 15px;
+    margin: 6px;
 }
 
-.usersItem {
-    margin: 6px;
-    border: 1px silver solid;
+.userImg {
+    border-radius: 50%;
 }
