@@ -2,7 +2,7 @@ import styles from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
-const Dialogs = ({ messagesPage, sendNewMessage, messageText, setDialog }) => {
+const Dialogs = ({ messagesPage, sendNewMessage, setMessageText, setDialog }) => {
   let dialogsElement = messagesPage.usersData.map((user) => (
     <DialogItem
       setDialog={setDialog}
@@ -29,7 +29,7 @@ const Dialogs = ({ messagesPage, sendNewMessage, messageText, setDialog }) => {
   });
 
   let sendMessageText = (e) => {
-    messageText(e.target.value);
+    setMessageText(e.target.value);
   };
   let sendToNewMessage = () => {
     let id = messagesPage.activeDialog.id;

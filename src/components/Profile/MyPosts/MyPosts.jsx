@@ -1,7 +1,7 @@
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-const MyPosts = ({ profilePage, addPost, postOnChange }) => {
+const MyPosts = ({ profilePage, addPost, addCharAtPost }) => {
   const postsElements = profilePage.postData.map((item) => (
     <Post
       profileImg={profilePage.profileInfo.profileImg}
@@ -11,9 +11,9 @@ const MyPosts = ({ profilePage, addPost, postOnChange }) => {
     />
   ));
   const addNewPost = () => addPost();
-  const newPostOnChange = (e) => {
+  const addChar = (e) => {
     let value = e.target.value;
-    postOnChange(value);
+    addCharAtPost(value);
   };
 
   return (
@@ -21,10 +21,7 @@ const MyPosts = ({ profilePage, addPost, postOnChange }) => {
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea
-            onChange={newPostOnChange}
-            value={profilePage.newPostText}
-          />
+          <textarea onChange={addChar} value={profilePage.newPostText} />
         </div>
         <button onClick={addNewPost}>Add new post</button>
       </div>

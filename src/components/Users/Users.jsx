@@ -1,3 +1,4 @@
+import Preloader from "../Preloader/Preloader";
 import styles from "./Users.module.css";
 
 const Users = ({
@@ -8,6 +9,7 @@ const Users = ({
   users,
   unfollow,
   follow,
+  itemIsLoading,
 }) => {
   let pagesCount = Math.ceil(totalUsersCount / pageSize);
   let pages = [];
@@ -15,12 +17,13 @@ const Users = ({
     pages.push(i);
   }
 
-  let currentPageStart = currentPage - 5 < 0 ? 0 : currentPage - 5
+  let currentPageStart = currentPage - 5 < 0 ? 0 : currentPage - 5;
   let currentPageEnd = currentPage + 5;
-  let slicedPage = pages.slice(currentPageStart, currentPageEnd)
+  let slicedPage = pages.slice(currentPageStart, currentPageEnd);
 
   return (
     <div className={styles.usersContainer}>
+      {itemIsLoading ? <Preloader /> : <></>}
       <div>
         {slicedPage.map((page) => (
           <span

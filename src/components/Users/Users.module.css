@@ -1,21 +1,23 @@
 .usersItem {
-    padding-bottom: 15px;
-    margin: 6px;
+  padding-bottom: 15px;
+  margin: 6px;
 }
 
 .userImg {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
-.selectedPage, .paginationItem {
-    font-size: 15px;
-    margin: 2px;
+.selectedPage,
+.paginationItem {
+  font-size: 15px;
+  margin: 2px;
 }
 
-.selectedPage, .paginationItem:hover {
-    cursor: pointer;
+.selectedPage,
+.paginationItem:hover {
+  cursor: pointer;
 }
 
 .selectedPage {
-    font-weight: bold;
+  font-weight: bold;
 }

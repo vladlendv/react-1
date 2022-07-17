@@ -3,12 +3,14 @@ const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
+const IS_LOADING = "IS_LOADING";
 
 let initialState = {
   users: [],
   pageSize: 10,
   totalUsersCount: null,
   currentPage: 1,
+  isLoading: false,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -32,25 +34,31 @@ const usersReducer = (state = initialState, action) => {
     case SET_CURRENT_PAGE:
       return { ...state, currentPage: action.page };
     case SET_TOTAL_USERS_COUNT:
-      return {...state, totalUsersCount: action.count}
+      return { ...state, totalUsersCount: action.count };
+    case IS_LOADING:
+      return { ...state, isLoading: action.bool };
     default:
       return state;
   }
 };
 
-export const followActionCreator = (userId) => ({ type: FOLLOW, id: userId });
-export const unfollowActionCreator = (userId) => ({
+export const follow = (userId) => ({ type: FOLLOW, id: userId });
+export const unfollow = (userId) => ({
   type: UNFOLLOW,
   id: userId,
 });
-export const setUsersActionCreator = (users) => ({ type: SET_USERS, users });
-export const setCurrentPageActionCreator = (page) => ({
+export const setUsers = (users) => ({ type: SET_USERS, users });
+export const setCurrentPage = (page) => ({
   type: SET_CURRENT_PAGE,
   page,
 });
-export const setTotalUsersCountActionCreator = (count) => ({
+export const setTotalUsersCount = (count) => ({
   type: SET_TOTAL_USERS_COUNT,
   count,
+});
+export const isLoading = (bool) => ({
+  type: IS_LOADING,
+  bool,
 });
 
 export default usersReducer;

@@ -89,15 +89,15 @@ const messagesReducer = (state = initialState, action) => {
   }
 };
 
-export const newMessageTextActionCreator = (newText) => ({
+export const setMessageText = (newText) => ({
   type: NEW_MESSAGE_TEXT,
   newText,
 });
-export const sendNewMessageActionCreator = ({ id }) => ({
+export const sendNewMessage = (id) => ({
   type: SEND_MESSAGE,
   id,
 });
-export const setDialogActionCreator = (user) => ({
+export const setDialog = (user) => ({
   type: SET_ACTIVE_DIALOG,
   user,
 });
