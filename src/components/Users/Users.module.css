@@ -6,3 +6,16 @@
 .userImg {
     border-radius: 50%;
 }
+
+.selectedPage, .paginationItem {
+    font-size: 15px;
+    margin: 2px;
+}
+
+.selectedPage, .paginationItem:hover {
+    cursor: pointer;
+}
+
+.selectedPage {
+    font-weight: bold;
+}
